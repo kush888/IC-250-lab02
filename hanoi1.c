@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<math.h>
  
 struct node
 {
@@ -125,15 +126,199 @@ int pop3()
 
 int main()
 {
-	int n,i ;
+	int n,i,x,t1,t2 ;
 	printf("Enter the no. the disks : ");
 	scanf("%d",&n);
 	for(i=1;i<=n;i++)
 	{
 		push1(i);
 	}
-	for(i=0;i<=n;i++)
-	{
-		printf("%d",pop1())	;
+	x=pow(2,n)-1;
+	printf("\nDisk movement sequence to solve it is as follows:\n\n");
+	if(n%2==0)
+	{	
+		for(i=1;i<=x;i++)
+		{
+			printf("[%d]",i);
+			if(i%3==1)
+			{
+				t1 = pop1();
+				t2 = pop3();
+				if(t1==0)
+				{
+					push1(t2);
+					printf("Move Disk from Peg C --> Peg A \n");
+				}
+				else if(t2==0)
+				{
+					push3(t1);
+					printf("Move Disk from Peg A --> Peg C \n");
+				}
+				else if(t1>t2)
+				{
+					push3(t2);
+					push3(t1);
+					printf("Move Disk from Peg A --> Peg C \n");
+				}
+				else if(t2>t1)
+				{
+					push1(t1);
+					push1(t2);
+					printf("Move Disk from Peg C --> Peg A \n");
+				}
+			}
+
+			if(i%3==2)
+			{
+				t1 = pop1();
+				t2 = pop2();
+				if(t1==0)
+				{
+					push1(t2);
+					printf("Move Disk from Peg B --> Peg A \n");
+				}
+				else if(t2==0)
+				{
+					push2(t1);
+					printf("Move Disk from Peg A --> Peg B \n");
+				}
+				else if(t1>t2)
+				{
+					push2(t2);
+					push2(t1);
+					printf("Move Disk from Peg A --> Peg B \n");
+				}
+				else if(t2>t1)
+				{
+					push1(t1);
+					push1(t2);
+					printf("Move Disk from Peg B --> Peg A \n");
+				}
+				
+			}
+
+			if(i%3==0)
+			{
+				t1 = pop2();
+				t2 = pop3();
+				if(t1==0)
+				{
+					push2(t2);
+					printf("Move Disk from Peg C --> Peg B \n");
+				}
+				else if(t2==0)
+				{
+					push3(t1);
+					printf("Move Disk from Peg B --> Peg C \n");
+				}
+				else if(t1>t2)
+				{
+					push3(t2);
+					push3(t1);
+					printf("Move Disk from Peg B --> Peg C \n");
+				}
+				else if(t2>t1)
+				{
+					push2(t1);
+					push2(t2);
+					printf("Move Disk from Peg C --> Peg B \n");
+				}
+				
+			}
+		}
 	}
+	else
+	{
+		for(i=1;i<=x;i++)
+		{
+			printf("[%d]",i);
+			if(i%3==1)
+			{
+				t1 = pop1();
+				t2 = pop2();
+				if(t1==0)
+				{
+					push1(t2);
+					printf("Move Disk from Peg B --> Peg A \n");
+				}
+				else if(t2==0)
+				{
+					push2(t1);
+					printf("Move Disk from Peg A --> Peg B \n");
+				}
+				else if(t1>t2)
+				{
+					push2(t2);
+					push2(t1);
+					printf("Move Disk from Peg A --> Peg B \n");
+				}
+				else if(t2>t1)
+				{
+					push1(t1);
+					push1(t2);
+					printf("Move Disk from Peg B --> Peg A \n");
+				}
+			}
+
+			if(i%3==2)
+			{
+				t1 = pop1();
+				t2 = pop3();
+				if(t1==0)
+				{
+					push1(t2);
+					printf("Move Disk from Peg C --> Peg A \n");
+				}
+				else if(t2==0)
+				{
+					push3(t1);
+					printf("Move Disk from Peg A --> Peg C \n");
+				}
+				else if(t1>t2)
+				{
+					push3(t2);
+					push3(t1);
+					printf("Move Disk from Peg A --> Peg C \n");
+				}
+				else if(t2>t1)
+				{
+					push1(t1);
+					push1(t2);
+					printf("Move Disk from Peg C --> Peg A \n");
+				}
+				
+			}
+
+			if(i%3==0)
+			{
+				t1 = pop2();
+				t2 = pop3();
+				if(t1==0)
+				{
+					push2(t2);
+					printf("Move Disk from Peg C --> Peg B \n");
+				}
+				else if(t2==0)
+				{
+					push3(t1);
+					printf("Move Disk from Peg B --> Peg C \n");
+				}
+				else if(t1>t2)
+				{
+					push3(t2);
+					push3(t1);
+					printf("Move Disk from Peg B --> Peg C \n");
+				}
+				else if(t2>t1)
+				{
+					push2(t1);
+					push2(t2);
+					printf("Move Disk from Peg C --> Peg B \n");
+				}
+				
+			}
+		}
+	}
+	printf("\n");
+	return 0;
 }

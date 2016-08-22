@@ -5,10 +5,7 @@ int count=0 ;
 int tower(int n , char source , char dest , char aux )
 {
 	if(n==0)
-	{
 		return 0 ;
-	}
-
 	tower(n-1,source,aux,dest);
 	count ++;
 	printf("[%d] Move Disk from Peg %c --> Peg %c \n",count,source,dest);
@@ -26,5 +23,5 @@ int main()
 	printf("\nDisk movement sequence to solve it is as follows:\n\n");
 	tower(n,source,dest,aux);
 	printf("\n");
-
+	return 0 ;
 }

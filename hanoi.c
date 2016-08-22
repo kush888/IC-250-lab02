@@ -11,7 +11,7 @@ int tower(int n , char source , char dest , char aux )
 
 	tower(n-1,source,aux,dest);
 	//count ++;
-	printf("Move Disk from Peg %c --> Peg %c %d \n",source,dest,count);
+	printf("Move Disk from Peg %c --> Peg %c \n",source,dest);
 	tower(n-1,aux,dest,source);
 
 }

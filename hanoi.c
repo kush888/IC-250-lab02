@@ -1,17 +1,17 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
+int count=0 ;
 
 int tower(int n , char source , char dest , char aux )
 {
-	//static int count=0 ;
 	if(n==0)
 	{
 		return 0 ;
 	}
 
 	tower(n-1,source,aux,dest);
-	//count ++;
-	printf("Move Disk from Peg %c --> Peg %c \n",source,dest);
+	count ++;
+	printf("[%d] Move Disk from Peg %c --> Peg %c \n",count,source,dest);
 	tower(n-1,aux,dest,source);
 
 }
@@ -23,6 +23,8 @@ int main()
 	int n ;
 	printf("Enter the no. the disks : ");
 	scanf("%d",&n);
-	printf("\n");
+	printf("\nDisk movement sequence to solve it is as follows:\n\n");
 	tower(n,source,dest,aux);
+	printf("\n");
+
 }
